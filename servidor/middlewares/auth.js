@@ -12,15 +12,13 @@ let verificarUsuario = (req, res, next) => {
   // Recibimos los datos de la request. Var next es de middlewares
   if (!req.headers.authorization) {
     return res.status(403).send({
-      message: "La petición no tiene la cabecera requerida para autenticacion"
+      message: "Necesitas enviar un token de autenticacion"
     });
   }
-
   var token = req.headers.authorization.replace(/['"]+/g, "");
-
   try {
     // Hasta aqui tenemos el token y lo decodificamos
-    var payload = jwt.decode(token, secret);
+    jwt.decode(token, secret);
   } catch (ex) {
     return res.status(404).send({
       message: "Token no válido"

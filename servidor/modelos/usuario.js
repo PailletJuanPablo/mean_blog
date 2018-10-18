@@ -8,9 +8,9 @@ var Schema = mongoose.Schema;
 
 //Creamos el modelo
 var UserSchema = Schema({
-    nombre: String,
-    email: String,
-    password: String
+    nombre: {type:String,required:true},
+    email: {type:String,required:true},
+    password: {type:String,required:true}
 });
 
 //Lo exportamos

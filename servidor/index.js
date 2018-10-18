@@ -13,13 +13,15 @@ app.use(bodyParser.json());
 // Configuramos cabeceras HTTP
 // Esto permitirá recibir peticiones de cualquier origen (nos servirá cuando utilicemos Angular)
 app.use((req, res, next) => {
-  res.header("Acces-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Origin", "*") //* to give access to any origin
   res.header(
-    "Access-Control-Allow-Headers",
-    "Authorization,X-API-KEY,Origin,X-Requested-With,Content-Type,Accept,Access-Control-Allow-Request-Method"
+      "Access-Control-Allow-Headers",
+      "Origin, X-Requested-With, Content-Type, Accept, Authorization" //to give access to all the headers provided
   );
-  res.header("Access-Control-Allow-Methods", "GET, POST, PUT,DELETE");
-  res.header("Allow", "GET, POST, PUT,DELETE");
+  if(req.method === 'OPTIONS'){
+      res.header('Access-Control-Allow-Methods', 'PUT, POST, PATCH, DELETE, GET'); //to give access to all the methods provided
+      return res.status(200).json({});
+  }
   next();
 });
 

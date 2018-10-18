@@ -12,6 +12,7 @@ var md_auth = require ('../middlewares/auth')
 router.get('/',UserController.obtenerUsuarios);
 router.post('/registro',UserController.crearUsuario);
 router.post('/login',UserController.login);
+router.get('/prueba',md_auth,UserController.prueba)
 // Lo exportamos para usar en app.js
 module.exports = router;
 
