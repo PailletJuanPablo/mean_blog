@@ -20,7 +20,7 @@ function pruebas(req, res) {
 
 // CREAR USUARIO
 
-let saveUser = (req, res) => {
+let crearUsuario = (req, res) => {
   var user = new User();
   var params = req.body;
 
@@ -66,7 +66,7 @@ let saveUser = (req, res) => {
 
 // LOGUEAR USUARIO
 
-let loginUser = (req, res) => {
+let login = (req, res) => {
   //Recibimos los parametros del body con body-parser
   let params = req.body;
 
@@ -101,7 +101,7 @@ let loginUser = (req, res) => {
 
 // ACTUALIZAR USUARIO
 
-let updateUser = (req, res) => {
+let actualizarUsuario = (req, res) => {
   // req.param se refiere al parametro de url
   var userId = req.params.id;
   // req.body al cuerpo de la petición
@@ -121,7 +121,7 @@ let updateUser = (req, res) => {
 };
  
 
-let getUsers = (req,res)=>{
+let obtenerUsuarios = (req,res)=>{
   User.find({},'name surname email',(err,users)=>{
     if (err){
       return err;
@@ -133,8 +133,8 @@ let getUsers = (req,res)=>{
 
 //Exportamos los métodos en un módulo para poder utilizarlos
 module.exports = {
-  saveUser,
-  loginUser,
-  updateUser,
-  getUsers
+  crearUsuario,
+  login,
+  actualizarUsuario,
+  obtenerUsuarios
 };

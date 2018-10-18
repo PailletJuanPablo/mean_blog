@@ -9,9 +9,9 @@ var router = express.Router();
 var md_auth = require ('../middlewares/auth')
 
 // Rutasd de la App
-router.get('/ver',UserController.getUsers);
-router.post('/registro',UserController.saveUser);
-router.post('/login',UserController.loginUser);
+router.get('/',UserController.obtenerUsuarios);
+router.post('/registro',UserController.crearUsuario);
+router.post('/login',UserController.login);
 // Lo exportamos para usar en app.js
 module.exports = router;
 

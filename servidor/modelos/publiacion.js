@@ -5,12 +5,14 @@ let mongoose = require('mongoose');
 let Schema = mongoose.Schema;
 
 //Creamos el modelo de Fecha
-let ModeloElemento = Schema({
-
+let Publicacion = Schema({
+    titulo:{type:String,required:true},
+    contenido: {type:String,required:true},
+    imagen:{type:String}
     // Aquí se especifica en JSON
     // nombreCampo:{type:tipo de dato, required: true or false (si es requerido o no )}
     
 });
 
 //Lo exportamos
-module.exports = mongoose.model('Elemento', ModeloElemento);
+module.exports = mongoose.model('Publicacion', Publicacion);
