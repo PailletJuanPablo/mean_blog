@@ -1,4 +1,6 @@
+import { Router } from '@angular/router';
 import { Component } from '@angular/core';
+import { UserService } from './services/user.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,17 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'angularBlog';
+  constructor(public userSv: UserService, public router: Router) {
+  }
+
+  get logged() {
+    return this.userSv.logueado;
+  }
+
+  cerrarSesion() {
+    this.userSv.cerrarSesion();
+    this.router.navigateByUrl('inicio');
+  }
+
+
 }
