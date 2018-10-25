@@ -7,7 +7,9 @@ var app = express();
 //Cargamos el módulo de mongoose
 let mongoose = require("mongoose");
 // Decimos que utilizaremos bodyparser. Esto permite recibir peticiones POST con un cuerpo (EJ: un formulario)
-app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
 app.use(bodyParser.json());
 
 // Configuramos cabeceras HTTP

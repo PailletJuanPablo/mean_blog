@@ -1,0 +1,15 @@
+<div class="container">
+  <h3> Agregar entrada </h3>
+  <form (submit)="publicar()">
+    <div class="form-group">
+      <label>Título</label>
+      <input type="email" class="form-control" [(ngModel)]="titulo" name="titulo" aria-describedby="emailHelp"
+        placeholder="Ingresar Título...">
+    </div>
+    <div class="form-group">
+      <label>Contenido </label>
+      <textarea type="password" class="form-control" [(ngModel)]="contenido" name="contenido"></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Ingresar</button>
+  </form>
+</div>

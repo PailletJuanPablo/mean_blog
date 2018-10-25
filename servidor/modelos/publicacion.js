@@ -8,7 +8,7 @@ let Schema = mongoose.Schema;
 let Publicacion = Schema({
     titulo:{type:String,required:true},
     contenido: {type:String,required:true},
-    imagen:{type:String}
+    imagen:{type:String,default: 'https://www.foot.com/wp-content/uploads/2017/03/placeholder.gif'}
     // Aquí se especifica en JSON
     // nombreCampo:{type:tipo de dato, required: true or false (si es requerido o no )}
     

@@ -4,7 +4,7 @@
 var Usuario = require('../modelos/usuario')
 var bcrypt = require('bcrypt');
 // Definimos la cantidad de repeticiones del encriptado
-const saltRounds = 10
+const saltRounds = 10;
 
 
 // Importamos servicio de JWT
@@ -84,7 +84,7 @@ let actualizarUsuario = (req, res) => {
   // req.body al cuerpo de la petición
   var update = req.body
 
-  User.findByIdAndUpdate(userId, update, (err, userUpdated) => {
+  Usuario.findByIdAndUpdate(userId, update, (err, userUpdated) => {
     if (err) {
       res.status(500).send({ message: 'No se pudo actualizar el user' })
     } else {
@@ -98,7 +98,7 @@ let actualizarUsuario = (req, res) => {
 }
 
 let obtenerUsuarios = (req, res) => {
-  User.find({}, 'name surname email', (err, users) => {
+  Usuario.find({}, 'name surname email', (err, users) => {
     if (err) {
       return err
     } else {

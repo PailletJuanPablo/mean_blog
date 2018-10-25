@@ -1,17 +1,17 @@
 // Importamos los modelos Mongoose para poder acceder a sus metodos
 // En este caso es un elemento de demo, deberán importar los que hayan creado
-var Publicacion = require("../modelos/publiacion");
+var Publicacion = require("../modelos/publicacion");
 
 // ------------------------------------
 // Método para obtener todos los elementos
 // ------------------------------------
 
-let obtenerPublicaciones = (req, res) =>{
+let obtenerPublicaciones = (req, res) => {
     //Ejecutaremos el metodo find para obtener todos los elementos
-    Publicaciones.find()
+    Publicacion.find()
     // Esto ejecuta una promise, que podemos manejar con 
     //.then cuando es ejecutada con éxito, 
-    .then((pulblicaciones)=>{
+    .then((publicaciones)=>{
         // Devolvemos respuesta en formato JSON con todos los elementos recibidos
         return res.send(publicaciones)
     })
