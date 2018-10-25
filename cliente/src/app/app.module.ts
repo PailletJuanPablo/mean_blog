@@ -13,9 +13,11 @@ import { Routes, CanActivate, RouterModule } from '@angular/router';
 import { UserService } from './services/user.service';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { VerEntradaComponent } from './pages/ver-entrada/ver-entrada.component';
 
 export const RUTAS: Routes = [
   { path: '', component: VerEntradasComponent },
+  { path: 'entrada/:id', component: VerEntradaComponent },
   { path: 'login', component: LoginComponent},
   { path: 'perfil', component: MiPerfilComponent, canActivate: [VerificarLogueadoService] },
   { path: 'publicar', component: AgregarEntradaComponent, canActivate: [VerificarLogueadoService] },
@@ -30,7 +32,8 @@ export const RUTAS: Routes = [
     AgregarEntradaComponent,
     EditarEntradaComponent,
     VerEntradasComponent,
-    MiPerfilComponent
+    MiPerfilComponent,
+    VerEntradaComponent
   ],
   imports: [
     BrowserModule,
