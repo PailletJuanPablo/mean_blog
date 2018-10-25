@@ -38,7 +38,7 @@ let crearUsuario = (req, res) => {
   // Si se recibio encriptamos contraseña
   usuario.password = bcrypt.hashSync(body.password, saltRounds);
   usuario.save().then((usuarioGuardado)=>{
-    return res.send(usuarioGuardado)
+    return res.send({usuario:usuarioGuardado,token:jwt.createToken(usuarioGuardado)})
   })
 }
 
