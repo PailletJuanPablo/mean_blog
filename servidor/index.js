@@ -6,6 +6,8 @@ var bodyParser = require("body-parser");
 var app = express();
 //Cargamos el módulo de mongoose
 let mongoose = require("mongoose");
+app.use('/uploads', express.static('./uploads'));
+
 // Decimos que utilizaremos bodyparser. Esto permite recibir peticiones POST con un cuerpo (EJ: un formulario)
 app.use(bodyParser.json({limit: '50mb'}));
 app.use(bodyParser.urlencoded({limit: '50mb', extended: true, parameterLimit: 9999}));

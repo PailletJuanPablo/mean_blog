@@ -34,7 +34,7 @@ router.post(
   publicacionesController.actualizarPublicacion
 )
 router.post(
-  '/eliminar/:id',
+  '/eliminar/',
   verificarUsuario,
   publicacionesController.eliminarPublicacion
 )

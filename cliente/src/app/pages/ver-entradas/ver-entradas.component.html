@@ -1,3 +1,12 @@
-<p>
-  ver-entradas works!
-</p>
+<div class="row">
+
+  <div class="col" *ngFor="let entrada of entradas"  (click)="verEntrada(entrada)" >
+  <div class="card" style="width: 18rem;">
+    <img class="card-img-top" [src]="entrada.imagen" alt="Card image cap">
+    <div class="card-body">
+      <p class="card-text">{{entrada.titulo}}</p>
+    </div>
+  </div>
+</div>
+
+</div>

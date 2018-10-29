@@ -33,11 +33,12 @@ let obtenerPublicaciones = (req, res) => {
 let crearPublicacion = (req,res, next) => {
     // Obtenemos la ruta en donde el archivo es guardado y 
     // la convertimos en ruta absoluta con el módulo path.resolve()
-    let rutaImagen = path.resolve(req.file.path);
+    let rutaImagen =req.file.path;
     // Ejecutamos el método .create del elemento, que nos permite ejecutar un then o un catch
     // .then cuando fué completado satisfactoriamente
     Publicacion.create(req.body).then((publicacionCreada)=>{
-        publicacionCreada.imagen = rutaImagen;
+        // Agregamos un path temporal debido al puerto en el que estamos trabajando
+        publicacionCreada.imagen = 'http://localhost:1234/'+rutaImagen;
         publicacionCreada.save();
         // Si fue creado, devolvemos respuesta confirmando acción
         return res.send({mensaje:"Publicacion Creada",detalles:publicacionCreada})
@@ -91,8 +92,11 @@ let verPublicacion = (req,res)=>{
 
 let eliminarPublicacion = (req,res)=>{
     // Ejecutamos la función findByIdAndRemove, que recibe un id y datos a actualizar
-    Publicacion.findByIdAndRemove(req.params.id)
-    .then(()=>{
+    Publicacion.findByIdAndRemove(req.body.id)
+    .then((eliminada)=>{
+        if(!eliminada){
+            return res.send("No se pudo eliminar");
+        }
         // Con then, capturamos el evento satisfactorio (eliminación)
         return res.send({message:"Elemento eliminado correctamente"})
     })

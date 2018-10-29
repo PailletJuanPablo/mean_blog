@@ -7,7 +7,6 @@ import { HttpClient } from '@angular/common/http';
 export class UserService {
   public logueado = false;
   constructor(public http: HttpClient) {
-
     const token = localStorage.getItem('token');
     if (token) {
       this.logueado = true;
@@ -23,13 +22,13 @@ export class UserService {
     localStorage.clear();
   }
 
-  async login(email, password) {
+  login(email: string, password: string ) {
     return new Promise((resolve, reject) => {
-      const body = {
-        email,
-        password
+      const cuerpoPeticion = {
+        email: email,
+        password: password
       };
-      this.http.post('http://localhost:1234/usuarios/login', body).toPromise()
+      this.http.post('http://localhost:1234/usuarios/login', cuerpoPeticion).toPromise()
         .then((respuesta: { token: string }) => {
           console.log(respuesta);
           localStorage.setItem('token', respuesta.token);

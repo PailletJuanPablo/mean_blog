@@ -13,7 +13,7 @@ export class VerEntradaComponent implements OnInit {
 
   ngOnInit() {
     this.id = this.route.snapshot.params.id;
-    console.log(this.route.snapshot)
+    console.log(this.route.snapshot);
   }
 
 }
