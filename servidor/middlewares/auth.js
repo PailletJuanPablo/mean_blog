@@ -20,7 +20,7 @@ let verificarUsuario = (req, res, next) => {
     // Hasta aqui tenemos el token y lo decodificamos
     jwt.decode(token, secret);
   } catch (ex) {
-    return res.status(404).send({
+    return res.status(403).send({
       message: "Token no válido"
     });
   }

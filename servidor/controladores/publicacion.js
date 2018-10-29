@@ -1,3 +1,7 @@
+// Importamos el módulo path (incluído en node) para tener la ruta correcta del archivo
+var path = require('path');
+
+
 // Importamos los modelos Mongoose para poder acceder a sus metodos
 // En este caso es un elemento de demo, deberán importar los que hayan creado
 var Publicacion = require("../modelos/publicacion");
@@ -26,14 +30,19 @@ let obtenerPublicaciones = (req, res) => {
 // Método para crear un elemento nuevo
 // ------------------------------------
 
-let crearPublicacion = (req,res) =>{
+let crearPublicacion = (req,res, next) => {
+    // Obtenemos la ruta en donde el archivo es guardado y 
+    // la convertimos en ruta absoluta con el módulo path.resolve()
+    let rutaImagen = path.resolve(req.file.path);
     // Ejecutamos el método .create del elemento, que nos permite ejecutar un then o un catch
     // .then cuando fué completado satisfactoriamente
     Publicacion.create(req.body).then((publicacionCreada)=>{
+        publicacionCreada.imagen = rutaImagen;
+        publicacionCreada.save();
         // Si fue creado, devolvemos respuesta confirmando acción
         return res.send({mensaje:"Publicacion Creada",detalles:publicacionCreada})
     })
-    .catch((errorCreando)=>{
+    .catch((errorCreando)=> {
         //Si no lo fué, capturamos el error con el catch y lo devulvemos
         return res.send({mensaje:"No se pudo crear",error:errorCreando})
     })

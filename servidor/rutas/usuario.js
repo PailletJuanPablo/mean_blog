@@ -15,5 +15,3 @@ router.post('/login',UserController.login);
 router.get('/prueba',md_auth,UserController.prueba)
 // Lo exportamos para usar en app.js
 module.exports = router;
-
-

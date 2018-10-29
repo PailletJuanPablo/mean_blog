@@ -7,10 +7,8 @@ var app = express();
 //Cargamos el módulo de mongoose
 let mongoose = require("mongoose");
 // Decimos que utilizaremos bodyparser. Esto permite recibir peticiones POST con un cuerpo (EJ: un formulario)
-app.use(bodyParser.urlencoded({
-  extended: true
-}));
-app.use(bodyParser.json());
+app.use(bodyParser.json({limit: '50mb'}));
+app.use(bodyParser.urlencoded({limit: '50mb', extended: true, parameterLimit: 9999}));
 
 // Configuramos cabeceras HTTP
 // Esto permitirá recibir peticiones de cualquier origen (nos servirá cuando utilicemos Angular)
@@ -28,7 +26,7 @@ app.use((req, res, next) => {
 });
 
 //Configuramos el puerto que tendrá nuestro servidor
-let puerto = 1234;
+let puerto = process.env.PORT || 1234;
 
 // Especificamos la base hacia donde nos conectaremos
 // let direccionBaseDatos = 'mongodb://localhost:27017/nombre_base';
