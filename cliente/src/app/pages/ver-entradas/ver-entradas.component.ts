@@ -8,14 +8,18 @@ import { Router } from '@angular/router';
   styleUrls: ['./ver-entradas.component.css']
 })
 export class VerEntradasComponent implements OnInit {
+  public loading = false;
 
   entradas: Array<any>;
   constructor(public publicacionSv: PublicacionService, public route: Router) { }
 
   ngOnInit() {
+    this.loading = true;
+
     this.publicacionSv.obtenerEntradas().then((entradas: any) => {
       console.log(entradas);
       this.entradas = entradas;
+      this.loading = false;
     });
   }
 

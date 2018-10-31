@@ -15,6 +15,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { VerEntradaComponent } from './pages/ver-entrada/ver-entrada.component';
 
+import { NgxLoadingModule } from 'ngx-loading';
+
+
 export const RUTAS: Routes = [
   { path: '', component: VerEntradasComponent },
   { path: 'entrada/:id', component: VerEntradaComponent },
@@ -39,7 +42,8 @@ export const RUTAS: Routes = [
     BrowserModule,
     RouterModule.forRoot(RUTAS),
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    NgxLoadingModule.forRoot({})
   ],
   providers: [VerificarLogueadoService, UserService, PublicacionService],
   bootstrap: [AppComponent]

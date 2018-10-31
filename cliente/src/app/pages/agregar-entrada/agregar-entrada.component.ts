@@ -27,7 +27,10 @@ export class AgregarEntradaComponent implements OnInit {
     console.log(this.contenido);
     this.publicacionService
       .publicarEntrada(this.titulo, this.contenido, this.imagen)
-      .then(() => console.log('publicado'))
+      .then(() => {
+        console.log('publicado');
+        this.router.navigateByUrl('inicio');
+    })
       .catch(() => {
         this.router.navigateByUrl('perfil');
       });

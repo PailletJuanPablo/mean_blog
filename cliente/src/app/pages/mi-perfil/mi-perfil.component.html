@@ -1,19 +1,20 @@
 <h3> Ingresaste correctamente! </h3>
 
-<table>
-
+<table class="table">
     <thead>
-        <tr>
-            <th> Titulo </th>
-            <th> Acciones </th>
-        </tr>
+      <tr>
+        <th scope="col">Titulo</th>
+        <th scope="col">Acciones</th>
+      </tr>
     </thead>
     <tbody>
         <tr *ngFor="let publicacion of publicaciones">
             <td> {{publicacion.titulo}} </td>
             <td>
-                <p (click)="eliminar(publicacion._id)"> Eliminar </p>
+                    <button type="button" (click)="eliminar(publicacion._id)" class="btn btn-danger">Eliminar</button>
             </td>
         </tr>
+     
     </tbody>
-</table>
+
+

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {  ActivatedRoute } from '@angular/router';
+import { PublicacionService } from 'src/app/services/publicacion.service';
 
 @Component({
   selector: 'app-ver-entrada',
@@ -9,11 +10,16 @@ import {  ActivatedRoute } from '@angular/router';
 export class VerEntradaComponent implements OnInit {
 
   public id;
-  constructor(public route: ActivatedRoute) { }
+  publicacion;
+  constructor(public route: ActivatedRoute, public publicacionService: PublicacionService) { }
 
   ngOnInit() {
-    this.id = this.route.snapshot.params.id;
-    console.log(this.route.snapshot);
+    this.route.params.subscribe((parametros) => {
+      this.publicacionService.obtenerEntrada(parametros.id).then((publicacion) => {
+        this.publicacion = publicacion;
+        console.log(this.publicacion);
+      });
+    });
   }
 
 }

@@ -24,6 +24,10 @@ export class PublicacionService {
     return this.http.get('http://localhost:1234/publicaciones').toPromise();
   }
 
+  obtenerEntrada(id) {
+    return this.http.get('http://localhost:1234/publicaciones/ver/' + id).toPromise();
+  }
+
   eliminarPublicacion(id) {
     const token = localStorage.getItem('token');
     const headers = new HttpHeaders({'Authorization': token});

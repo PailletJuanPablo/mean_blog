@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PublicacionService } from './../../services/publicacion.service';
+import {  Router } from '@angular/router';
 
 @Component({
   selector: 'app-mi-perfil',
@@ -8,7 +9,7 @@ import { PublicacionService } from './../../services/publicacion.service';
 })
 export class MiPerfilComponent implements OnInit {
 publicaciones;
-  constructor(private publisService: PublicacionService) { }
+  constructor(private publisService: PublicacionService, public route: Router) { }
 
   ngOnInit() {
     this.publisService.obtenerEntradas().then((publicaciones) => this.publicaciones = publicaciones);
@@ -17,6 +18,7 @@ publicaciones;
   eliminar(id) {
     console.log(id);
     this.publisService.eliminarPublicacion(id).then((res) => console.log(res));
+    window.location.reload();
   }
 
 }
