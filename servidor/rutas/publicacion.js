@@ -19,7 +19,14 @@ var upload = multer({
     }
   })
 })
-// Rutas de categorías
+
+// Rutas de Publicaciones
+// router es el módulo de rutas
+// Posteriormente se especifica la petición (get, post, put, etc.)
+// En los parámetros de este método, se especifica la ruta en sí (ej /imagen)
+// Y la función de nuestro controlador a llamar
+// Opcionalmente, pueden insertarse middlewares antes de la función a llamar para realizar alguna verificación adicional
+
 router.get('/', publicacionesController.obtenerPublicaciones)
 router.post(
   '/',

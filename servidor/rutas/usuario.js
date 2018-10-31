@@ -8,7 +8,14 @@ var router = express.Router();
 // Importamos el middleware para manejar authenticacion
 var md_auth = require ('../middlewares/auth');
 
-// Rutasd de la App
+
+// Rutas de Usuario
+// router es el módulo de rutas
+// Posteriormente se especifica la petición (get, post, put, etc.)
+// En los parámetros de este método, se especifica la ruta en sí (ej /imagen)
+// Y la función de nuestro controlador a llamar
+// Opcionalmente, pueden insertarse middlewares antes de la función a llamar para realizar alguna verificación adicional
+
 router.get('/',UserController.obtenerUsuarios);
 router.post('/registro',UserController.crearUsuario);
 router.post('/login',UserController.login);
